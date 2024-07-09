@@ -13,4 +13,9 @@ class Reply extends Model
         'ticket_id',
         'message',
     ];
+
+    public function ticket()
+    {
+        return $this->belongsTo(Ticket::class);
+    }
 }

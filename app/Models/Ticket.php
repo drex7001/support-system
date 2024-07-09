@@ -22,4 +22,9 @@ class Ticket extends Model
         'reference_number',
         'status',
     ];
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }

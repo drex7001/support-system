@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div>
         @if (session('message'))
-            <p class="text-white dark:bg-green-400 bg-green-400 rounded p-2">{{ session('message') }}</p>
+            <p class="text-white dark:bg-green-6    00 bg-green-600 rounded p-2">{{ session('message') }}</p>
         @endif
         <form action="/tickets" method="POST" class="">
             @csrf

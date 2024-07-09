@@ -20,8 +20,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/tickets', [\App\Http\Controllers\TicketController::class, 'index'])->name('tickets.index');
 Route::get('/tickets/create', [\App\Http\Controllers\TicketController::class, 'create'])->name('tickets.create');
 Route::post('/tickets', [\App\Http\Controllers\TicketController::class, 'store'])->name('tickets.store');
+
 Route::get('/tickets/{ticket}', [\App\Http\Controllers\TicketController::class, 'show'])->name('tickets.show');
-Route::get('/tickets/{ticket}/edit', [\App\Http\Controllers\TicketController::class, 'edit'])->name('tickets.edit');
+
+Route::post('/tickets/{ticket}/reply', [\App\Http\Controllers\ReplyController::class, 'store'])->name('reply.create');
 Route::patch('/tickets/{ticket}', [\App\Http\Controllers\TicketController::class, 'update'])->name('tickets.update');
 Route::delete('/tickets/{ticket}', [\App\Http\Controllers\TicketController::class, 'destroy'])->name('tickets.destroy');
 

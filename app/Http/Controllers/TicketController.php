@@ -47,9 +47,11 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ticket $ticket)
+    public function show($reference_number)
     {
-        
+        $ticket = Ticket::where('reference_number', $reference_number)->first();
+        // dd($ticket);
+        return view('tickets.show', compact('ticket'));
     }
 
     /**
