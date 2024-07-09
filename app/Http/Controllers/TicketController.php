@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Mail\SendReferenceToClient;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class TicketController extends Controller
 {
@@ -39,7 +41,7 @@ class TicketController extends Controller
             'status' => 'close',
         ]);
 
-        // Mail::to($ticket->email)->send(new \App\Mail\TicketAcknowledgement($ticket));
+        Mail::to($ticket->email)->send(new SendReferenceToClient($ticket));
 
         return redirect()->route('tickets.create')->with('message', 'Ticket created successfully. Your reference number is ' . $ticket->reference_number);
     }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Reply;
 use App\Http\Requests\StoreReplyRequest;
 use App\Http\Requests\UpdateReplyRequest;
+use App\Mail\ClientAcknowledgement;
 use App\Models\Ticket;
+use Illuminate\Support\Facades\Mail;
 
 class ReplyController extends Controller
 {
@@ -36,9 +38,10 @@ class ReplyController extends Controller
         ]);
 
         $ticket->status = 'closed';
+        // dd($ticket);
         $ticket->save();
 
-        // Mail::to($ticket->email)->send(new \App\Mail\TicketReply($ticket, $reply));
+        Mail::to($ticket->email)->send(new ClientAcknowledgement($reply,$ticket));
 
         return redirect()->route('tickets.show', $ticket->reference_number)->with('message', 'Reply created successfully.');
     }
