@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Mail\SendReferenceToClient;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 
@@ -51,9 +52,28 @@ class TicketController extends Controller
      */
     public function show($reference_number)
     {
+        dd('nnnn');
         $ticket = Ticket::where('reference_number', $reference_number)->first();
         // dd($ticket);
         return view('tickets.show', compact('ticket'));
+    }
+
+    public function search(Request $request)
+    {
+        dd('alkdjwakd');
+        $request->validate([
+            'reference_number' => 'required',
+        ]);
+
+        $reference_number = $request->input('reference_number');
+
+        $ticket = Ticket::where('reference_number', $reference_number)->first();
+        // dd($ticket);
+        if ($ticket) {
+            // return view('tickets.show', compact('ticket'));
+        } else {
+            return redirect()->back()->with('error', 'No ticket found for the provided reference number.');
+        }
     }
 
     /**
