@@ -46,7 +46,7 @@
 <body>
     <div class="container">
         <div class="logo">
-            <img src="https://img.freepik.com/premium-vector/free-vector-beautiful-flying-hummingbird-design-element-banners-posters-leaflets-brochur_1009653-1.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1720638000&semt=ais_user" alt="Company Logo">
+            <img src="https://img.freepik.com/premium-vector/free-vector-beautiful-flying-hummingbird-design-element-banners-posters-leaflets-brochur_1009653-1.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1720638000&semt=ais_user" alt="Company Logo" height="60px">
         </div>
         <div class="message">
             <p>Dear {{ $ticket['customer_name'] }},</p>

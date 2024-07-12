@@ -1,3 +1,88 @@
+## Setup A Project
+
+## About
+
+This is a Laravel project [brief description of your project].
+
+## Requirements
+
+- PHP >= 8.3
+- Composer
+- Node.js and npm
+
+## Installation
+
+1. Clone the repository
+   ```
+   git clone https://github.com/drex7001/support-system
+   ```
+
+2. Navigate to the project directory
+   ```
+   cd support-system
+   ```
+
+3. Install PHP dependencies
+   ```
+   composer install
+   ```
+
+4. Install NPM dependencies
+   ```
+   npm install
+   ```
+
+5. Create a copy of your .env file
+   ```
+   cp .env.example .env
+   ```
+
+6. Generate an app encryption key
+   ```
+   php artisan key:generate
+   ```
+
+7. Create an empty database for our application
+
+8. In the .env file, add database information to allow Laravel to connect to the database
+
+9. Migrate the database
+   ```
+   php artisan migrate
+   ```
+
+10. [Optional] Seed the database
+    ```
+    php artisan db:seed
+    ```
+
+## Running the application
+
+1. For development:
+   ```
+   php artisan serve
+   ```
+   The application will be available at `http://localhost:8000`.
+
+2. For frontend:
+   ```
+   npm run dev
+   ```
+
+## Login Details
+
+For testing purposes, you can use the following credentials:
+
+- Username: test@example.com
+- Password: password
+
+**Note:** It's recommended to change these credentials in a production environment.
+
+
+## About Laravel
+
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -7,9 +92,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
@@ -66,9 +149,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
-
-## Setup A Project
-
-
-
-username: test@example.com 
