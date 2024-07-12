@@ -63,10 +63,8 @@
                             <div class="pt-3 sm:pt-5">
                                 <h2 class="text-xl font-semibold text-black dark:text-white">Create Ticket</h2>
 
-                                <p class="mt-4 text-sm/relaxed">
-                                    Effortlessly lodge complaints through this. Simplify the process with user-friendly
-                                    forms and receive prompt acknowledgement of your concerns. Streamline your feedback
-                                    experience and contribute to improving our services.
+                                <p class="w-11/12 mt-4 text-sm/relaxed">
+                                    You can easily lodge complaints using our user-friendly forms. Once you submit a complaint, you will promptly receive an acknowledgment, ensuring that we have received your feedback. Your input is invaluable to us and helps us continually improve our services.
                                 </p>
                             </div>
                             <svg class="size-6 shrink-0 self-center stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg"
@@ -92,34 +90,32 @@
                             </div>
 
                             <div class="w-full pt-3 sm:pt-5">
-                                <form action="{{ route('tickets.search') }}">
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">View your ticket</h2>
-
+                                <form action="{{ route('tickets.search') }}" method="POST">
+                                    @csrf
+                                    <h2 class="text-xl font-semibold text-black dark:text-white">Track ticket</h2>
+                                    <p class="mt-4 text-sm/relaxed">
+                                        Track your complaints with real-time updates and notifications. Stay informed
+                                        and follow up effortlessly.
+                                    </p>
                                     <p class="mt-4 text-sm/relaxed">
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"
                                             for="reference_number">Referencenumber:</label>
                                         <input
-                                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                                            class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
                                             type="reference_number" id="reference_number" name="reference_number" required>
                                     </p>
+
+                                    <x-input-error :messages="$errors->get('reference_number')" class="mt-2" />
+                                    
                                     <section class="flex justify-end mt-4">
                                         <button type="submit"
                                             class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md dark:bg-gray-200 dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 ms-3">Submit</button>
                                     </section>
                                 </form>
                             </div>
-                            {{-- <svg class="size-6 shrink-0 self-center stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 24 24" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg> --}}
                         </div>
                     </div>
                 </main>
-
-                {{-- <footer class="py-16 text-sm text-center text-black dark:text-white/70">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </footer> --}}
             </div>
         </div>
     </div>

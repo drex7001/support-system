@@ -10,30 +10,34 @@
                     Name:</label>
                 <input
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
-                    type="text" id="customer_name" name="customer_name" required>
+                    type="text" id="customer_name" name="customer_name" {{-- required --}}>
             </section>
+            <x-input-error :messages="$errors->get('customer_name')" class="mt-2" />
 
             <section class="block mt-4">
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"
                     for="problem_description">Problem Description:</label>
                 <textarea
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
-                    ea id="problem_description" name="problem_description" required></textarea>
+                    ea id="problem_description" name="problem_description" {{-- required --}}></textarea>
             </section>
+            <x-input-error :messages="$errors->get('problem_description')" class="mt-2" />
 
             <section class="block mt-4">
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="email">Email:</label>
                 <input
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
-                    type="email" id="email" name="email" required>
+                    type="email" id="email" name="email" {{-- required --}}>
             </section>
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
             <section class="block mt-4">
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="phone">Phone:</label>
                 <input
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
-                    type="text" id="phone" name="phone" required>
+                    type="text" id="phone" name="phone" {{-- required --}}>
             </section>
+            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
 
             <section class="flex justify-end mt-4">
                 <button type="submit"

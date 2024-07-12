@@ -26,7 +26,7 @@ class StoreTicketRequest extends FormRequest
             'customer_name' => 'required|string|max:255',
             'problem_description' => 'required|string',
             'email' => 'required|email',
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|string|max:20|regex:/^[0-9+\-\(\)\s]+$/',
         ];
     }
 }

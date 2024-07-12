@@ -52,15 +52,12 @@ class TicketController extends Controller
      */
     public function show($reference_number)
     {
-        dd('nnnn');
         $ticket = Ticket::where('reference_number', $reference_number)->first();
-        // dd($ticket);
         return view('tickets.show', compact('ticket'));
     }
 
     public function search(Request $request)
     {
-        dd('alkdjwakd');
         $request->validate([
             'reference_number' => 'required',
         ]);
@@ -68,9 +65,9 @@ class TicketController extends Controller
         $reference_number = $request->input('reference_number');
 
         $ticket = Ticket::where('reference_number', $reference_number)->first();
-        // dd($ticket);
+
         if ($ticket) {
-            // return view('tickets.show', compact('ticket'));
+            return view('tickets.show', compact('ticket'));
         } else {
             return redirect()->back()->with('error', 'No ticket found for the provided reference number.');
         }

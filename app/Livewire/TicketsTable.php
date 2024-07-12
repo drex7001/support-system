@@ -7,8 +7,9 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Ticket;
 use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
-class TicektsTable extends DataTableComponent
+class TicketsTable extends DataTableComponent
 {
     protected $model = Ticket::class;
 
@@ -18,11 +19,6 @@ class TicektsTable extends DataTableComponent
             ->setTableRowUrl(function ($row) {
                 return route('tickets.show', $row->reference_number);
             });
-        $this->setSearchStatus(true);
-        // $this->setSearchPlaceholder('Enter Customer Name, Email, Phone number, Reference number');
-
-
-        $this->setFiltersStatus(true);
     }
 
     public function columns(): array
@@ -34,7 +30,10 @@ class TicektsTable extends DataTableComponent
                 ->sortable()
                 ->searchable(),
             Column::make("Problem description", "problem_description")
-                ->sortable(),
+                ->sortable()
+                ->format(
+                    fn($value, $row, Column $column) => Str::limit($value, 50)
+                ),
             Column::make("Email", "email")
                 ->sortable()
                 ->searchable(),
@@ -53,26 +52,14 @@ class TicektsTable extends DataTableComponent
         ];
     }
 
-    public function builder(): Builder
-    {
-        return Ticket::query()
-            ->when($this->getAppliedFilterWithValue('status'), fn ($query, $status) => $query->where('status', $status === 'open'));
-    }
-
-    public function filter(): array
+    public function filters(): array
     {
         return [
-            // SelectFilter::make('Status')
-            //     ->options([
-            //         '' => 'All',
-            //         'open' => 'Open',
-            //         'close' => 'Close',
-            //     ]),
-
-            SelectFilter::make('Status')
+            SelectFilter::make('Ticket status')
+                ->setFilterPillTitle('Status')
                 ->options([
-                    '' => 'All',
-                    'open' => 'Open',
+                    ''      => 'Any',
+                    'open'  => 'Open',
                     'close' => 'Close',
                 ])
                 ->filter(function (Builder $builder, string $value) {
